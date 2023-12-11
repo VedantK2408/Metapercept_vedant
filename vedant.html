@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1pt solid #D8D9DA;
+        }
+
+        th,
+        td {
+            border: 1pt solid #D8D9DA;
+            text-align: left;
+            padding: 8px;
+            font-size: 12pt;
+        }
+
+        th {
+            background-color: #D6EFED;
+            text-align: center;
+        }
+    </style>
+
+    <script type="application/xml">
+        <![CDATA[
+        <employees>
+            <employee>
+                <EmployeeName>Sahil</EmployeeName>
+                <Designation>Technical Writer</Designation>
+                <DateofJoining>2023-01-01</DateofJoining>
+                <Address>123 Main St</Address>
+                <Salary>600000</Salary>
+            </employee>
+        </employees>
+        ]]>
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <h2> Empolyer details</h2>
+    <table id="'employeeTable">
+        <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th> Designation</th>
+                <th> Date of Joining</th>
+                <th> Address</th>
+                <th> Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <xsl:for-each select="employees/employee[Designaton = 'Technical Writer']">
+                <tr>
+                    <td><xsl:value-of select="EmployeeName" /></xsl:value-of></td>
+                    <td><xsl:value-of select="Designation" /></xsl:value-of></td>
+                    <td><xsl:value-of select="DateofJoining" /></xsl:value-of></td>
+                    <td><xsl:value-of select="Address" /></xsl:value-of></td>
+                    <td><xsl:value-of select="Salary" /></xsl:value-of></td>
+                </tr>
+            </xsl:for-each>
+
+            <xsl:for-each select="employees/employee[Salary > 500000 and Salary < 700000 ]">
+                <tr>
+                    <td><xsl:value-of select="EmployeeName" /></xsl:value-of></td>
+                    <td><xsl:value-of select="Designation" /></xsl:value-of></td>
+                    <td><xsl:value-of select="DateofJoining" /></xsl:value-of></td>
+                    <td><xsl:value-of select="Address" /></xsl:value-of></td>
+                    <td><xsl:value-of select="Salary" /></xsl:value-of></td>
+                </tr>
+            </xsl:for-each>
+
+            <xsl:for-each select="employees">
+                <tr>
+                    <td><xsl:value-of select="employees/EmployeesName" /></xsl:value-of></td>
+                    <td><xsl:value-of select="employees/Designation" /></xsl:value-of></td>
+                    <td><xsl:value-of select="employees/DateofJoining" /></xsl:value-of></td>
+                </tr>
+            </xsl:for-each>
+
+        </tbody>
+    </table>
+</body>
+
+</html>
